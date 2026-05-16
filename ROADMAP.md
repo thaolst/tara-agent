@@ -1,57 +1,57 @@
 # Roadmap
 
-> Lộ trình phát triển Tara Agent. Mỗi phase khoang 2-4 tuan, tuy theo phan hoi tu nguoi dung.
+> Lộ trình phát triển Tara Agent. Mỗi phase khoảng 2-4 tuần, tùy theo phản hồi từ người dùng.
 
 ## Phase 1: Social Auto-Pilot (MVP)
 
-Muc tieu: 1 AI co the dang bai len LinkedIn, Facebook, Threads tu lenh Telegram.
+Mục tiêu: 1 AI có thể đăng bài lên LinkedIn, Facebook, Threads từ lệnh Telegram.
 
-| Tinh nang | Mo ta |
+| Tính năng | Mô tả |
 |---|---|
-| Soan bai LinkedIn | Draft + duyet + dang tu dong |
-| Soan bai Facebook | Draft + duyet + dang tu dong |
-| Soan bai Threads | Draft + duyet + dang tu dong |
-| Archive GitHub | Luu bai da dang vao memory |
-| Config mau | File openclaw.json cho nguoi moi |
+| Soạn bài LinkedIn | Draft + duyệt + đăng tự động |
+| Soạn bài Facebook | Draft + duyệt + đăng tự động |
+| Soạn bài Threads | Draft + duyệt + đăng tự động |
+| Archive GitHub | Lưu bài đã đăng vào memory |
+| Config mẫu | File openclaw.json cho người mới |
 
-## Phase 2: Lich dang bai
+## Phase 2: Lịch đăng bài
 
-Muc tieu: Dat lich truoc, AI tu dong nho va hoi ban truoc gio dang.
+Mục tiêu: Đặt lịch trước, AI tự động nhắc và hỏi bạn trước giờ đăng.
 
-| Tinh nang | Mo ta |
+| Tính năng | Mô tả |
 |---|---|
-| Lich tuan | Ke hoach dang bai cho ca tuan |
-| Nhan nhac | AI nhan ban 30p truoc gio dang |
-| Noi dung tu kho | Lay tu knowledge base co san |
-| Lich dinh ky | Lap lai hang tuan |
+| Lịch tuần | Kế hoạch đăng bài cho cả tuần |
+| Nhắc nhở | AI nhắc bạn 30p trước giờ đăng |
+| Nội dung từ kho | Lấy từ knowledge base có sẵn |
+| Lịch định kỳ | Lặp lại hàng tuần |
 
 ## Phase 3: Campaign Tracking
 
-Muc tieu: Theo doi hieu qua bai dang, campaign.
+Mục tiêu: Theo dõi hiệu quả bài đăng, campaign.
 
-| Tinh nang | Mo ta |
+| Tính năng | Mô tả |
 |---|---|
-| Thong ke tuong tac | Luot thich, comment, share |
-| So sanh campaign | Bai nao chay tot nhat |
-| Bao cao tuan | AI tong ket hieu qua hang tuan |
+| Thống kê tương tác | Lượt thích, comment, share |
+| So sánh campaign | Bài nào chạy tốt nhất |
+| Báo cáo tuần | AI tổng kết hiệu quả hàng tuần |
 
-## Phase 4: Mo rong
+## Phase 4: Mở rộng
 
-Muc tieu: Ghep them use case khac ngoai social.
+Mục tiêu: Ghép thêm use case khác ngoài social.
 
-| Tinh nang | Mo ta |
+| Tính năng | Mô tả |
 |---|---|
-| Competitor monitor | Theo doi bai dang cua doi thu |
-| Price tracker | Giong tara-bot flight search |
-| Knowledge base | Luu hoc tu moi vao repo |
-| Notion backup | Tu dong backup len Notion |
+| Competitor monitor | Theo dõi bài đăng của đối thủ |
+| Price tracker | Giống tara-bot flight search |
+| Knowledge base | Lưu học từ mới vào repo |
+| Notion backup | Tự động backup lên Notion |
 
-## Nguyen tac phat trien
+## Nguyên tắc phát triển
 
-- 1 tinh nang / phase. Khong lam qua nhieu cung luc.
-- Nhan phan hoi tu nguoi dung truoc khi them tinh nang moi.
-- Code + config luon di kem docs.
-- Tien Viet co dau la chinh. Tieng Anh trong details.
+- 1 tính năng / phase. Không làm quá nhiều cùng lúc.
+- Nhận phản hồi từ người dùng trước khi thêm tính năng mới.
+- Code + config luôn đi kèm docs.
+- Tiếng Việt có dấu là chính. Tiếng Anh trong details.
 
 ---
 
@@ -60,22 +60,22 @@ Muc tieu: Ghep them use case khac ngoai social.
 
 ## Roadmap
 
-Development roadmap for Tara Agent. Each phase takes about 2-4 weeks.
+Development roadmap for Tara Agent. Each phase takes about 2-4 weeks, depending on user feedback.
 
 ### Phase 1: Social Auto-Pilot (MVP)
-Goal: One AI that can post to LinkedIn, Facebook, Threads from Telegram commands.
+Goal: One AI that can post to LinkedIn, Facebook, and Threads from Telegram commands.
 
 Features: LinkedIn drafts, Facebook drafts, Threads drafts, GitHub archive, sample config.
 
 ### Phase 2: Posting Schedule
-Goal: Schedule posts in advance, AI reminds before posting time.
+Goal: Schedule posts in advance. AI reminds you before posting time.
 
-Features: Weekly calendar, 30min reminders, content from knowledge base.
+Features: Weekly calendar, 30-min reminders, content from knowledge base.
 
 ### Phase 3: Campaign Tracking
 Goal: Track post performance and campaign effectiveness.
 
-Features: Engagement stats, campaign comparison, weekly reports.
+Features: Engagement stats (likes, comments, shares), campaign comparison, weekly reports.
 
 ### Phase 4: Expansion
 Goal: Add more use cases beyond social posting.
@@ -85,7 +85,7 @@ Features: Competitor monitoring, price tracking (from tara-bot), knowledge base,
 ### Development principles
 - One feature per phase. No multitasking.
 - Collect user feedback before adding new features.
-- Always document alongside code/config.
-- Vietnamese first, English in details.
+- Always document alongside code and config.
+- Vietnamese first with full diacritics. English in details.
 
 </details>
