@@ -23,15 +23,15 @@ Không cần API key từng nền tảng. Không cần code. Chỉ cần OpenCla
 npm install -g openclaw@latest
 openclaw onboard
 
-# 2. Tạo Telegram bot (qua @BotFather)
-# 3. Tạo workspace cho social agent
-mkdir -p ~/.openclaw/workspace-social
+# 2. Clone repo và chạy merge
+git clone https://github.com/thaolst/tara-agent.git
+cd tara-agent
+python3 merge_config.py
 
-# 4. Copy config mẫu từ repo này
-#    - config/openclaw.json -> ~/.openclaw/openclaw.json
-#    - Sửa botToken + workspace path cho đúng
+# 3. Sửa botToken + username trong ~/.openclaw/openclaw.json
+nano ~/.openclaw/openclaw.json
 
-# 5. Restart và test
+# 4. Restart
 openclaw gateway restart
 ```
 

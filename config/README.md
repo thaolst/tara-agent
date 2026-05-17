@@ -1,46 +1,102 @@
 # Cấu hình mẫu cho Tara Agent (OpenClaw)
 
-Đây là config mẫu để chạy Tara Agent trên máy của bạn.
-
 ## Cách dùng
 
+File `openclaw.json` này là **phần cấu hình cho Tara Agent**. Bạn cần ghép (merge) nó vào file `~/.openclaw/openclaw.json` hiện tại.
+
+### Cách 1: Thủ công (khuyên dùng)
+
+1. Mở file config hiện tại:
 ```bash
-# 1. Tạo workspace riêng cho social agent
-mkdir -p ~/.openclaw/workspace-social
-
-# 2. Copy file config
-cp openclaw.json ~/.openclaw/openclaw.json
-
-# 3. Sửa 2 chỗ trong file config:
-#    - botToken: thay bằng token từ @BotFather
-#    - workspace: thay <username> bằng tên user thật
-#      (chạy lệnh 'whoami' để biết)
-
-# 4. Restart Gateway
-openclaw gateway restart
-
-# 5. Gửi tin nhắn cho bot:
-#    "soan bai linkedin" -> test thử
+nano ~/.openclaw/openclaw.json
 ```
 
-## Cấu trúc config
+2. Thêm các block sau vào đúng vị trí. Nếu key đã tồn tại, merge nội dung bên trong.
 
-| Key | Mô tả |
-|---|---|
-| `channels.telegram.botToken` | Token bot Telegram từ @BotFather |
-| `channels.telegram.dmPolicy` | Chính sách DM: `"open"` (ai cũng gửi được) |
-| `agents.list[0].workspace` | Path đến workspace của social agent |
-| `bindings` | Route Telegram DM đến agent `social` |
+**Block A — Telegram channel** (thêm vào cuối file, trước dấu `}` cuối cùng):
+```json
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "<token-tu-BotFather>",
+      "dmPolicy": "open",
+      "allowFrom": ["*"],
+      "groupPolicy": "disabled"
+    }
+  }
+```
+
+**Block B — Social agent** (thêm vào `agents.list`):
+```json
+    {
+      "id": "social",
+      "name": "Tara Social Agent",
+      "workspace": "/Users/<username>/.openclaw/workspace-social",
+      "identity": {
+        "emoji": "📢"
+      },
+      "subagents": {
+        "allowAgents": []
+      }
+    }
+```
+
+**Block C — Bindings** (thêm vào root level, cùng cấp với `agents`):
+```json
+  "bindings": [
+    {
+      "match": {
+        "channel": "telegram",
+        "peer": {
+          "kind": "dm",
+          "id": "*"
+        }
+      },
+      "agentId": "social"
+    }
+  ]
+```
+
+3. Tạo workspace cho social agent:
+```bash
+mkdir -p ~/.openclaw/workspace-social
+```
+
+4. Copy file SOUL.md từ repo:
+```bash
+cp workspace-social/SOUL.md ~/.openclaw/workspace-social/
+```
+
+5. Restart Gateway:
+```bash
+openclaw gateway restart
+```
+
+### Cách 2: Copy toàn bộ (chỉ dùng cho máy mới cài)
+
+Nếu bạn chưa có config nào, clone repo này và chạy script ghép tự động:
+```bash
+cd tara-agent
+python3 merge_config.py
+```
+
+Script này sẽ lấy config mặc định của OpenClaw và ghép Tara Agent vào.
+
+## Cấu trúc
+
+| Key | Mô tả | Bắt buộc sửa |
+|---|---|---|
+| `channels.telegram.botToken` | Token bot Telegram từ @BotFather | ✅ Có |
+| `agents.list[0].workspace` | Path đến workspace của social agent | ✅ Có (thay username) |
 
 ## Yêu cầu
 
-- OpenClaw đã cài đặt
+- OpenClaw đã cài đặt (`npm install -g openclaw@latest`)
 - Telegram bot token từ @BotFather
 - Đã login LinkedIn, Facebook, Threads trên browser (CrawBot)
-- Workspace `~/.openclaw/workspace-social` đã tồn tại
 
 ## Lưu ý
 
-- `dmPolicy: "open"` cho phép tất cả DM. Nếu muốn bảo mật, đổi thành `"pairing"` hoặc `"allowlist"` kèm `allowFrom` là Telegram user ID của bạn
+- `dmPolicy: "open"` cho phép tất cả DM. Đổi thành `"pairing"` nếu muốn bảo mật
 - `groupPolicy: "disabled"` — bot không hoạt động trong group
-- File config này dùng **JSON** thuần (không dùng JSON5). Không có comment, không có trailing comma
+- File config dùng **JSON thuần** — không có comment, không trailing comma
