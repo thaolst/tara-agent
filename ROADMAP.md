@@ -42,7 +42,7 @@ Mục tiêu: Ghép thêm use case khác ngoài social.
 | Tính năng | Mô tả |
 |---|---|
 | Competitor monitor | Theo dõi bài đăng của đối thủ |
-| Price tracker | Giống tara-bot flight search |
+| Price tracker | Theo dõi giá (tương tự tara-bot flight search) |
 | Knowledge base | Lưu học từ mới vào repo |
 | Notion backup | Tự động backup lên Notion |
 
@@ -80,7 +80,7 @@ Features: Engagement stats (likes, comments, shares), campaign comparison, weekl
 ### Phase 4: Expansion
 Goal: Add more use cases beyond social posting.
 
-Features: Competitor monitoring, price tracking (from tara-bot), knowledge base, Notion backup.
+Features: Competitor monitoring, price tracking, knowledge base, Notion backup.
 
 ### Development principles
 - One feature per phase. No multitasking.

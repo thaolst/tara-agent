@@ -1,32 +1,34 @@
 # Social Auto-Pilot
 
-Tu dong dang bai len LinkedIn, Facebook, Threads tu lenh Telegram.
+Tự động đăng bài lên LinkedIn, Facebook, Threads từ lệnh Telegram.
 
-## Cach hoat dong
+## Cách hoạt động
 
-Telegram (ban) -> AI soan draft -> Ban duyet -> OK -> AI dang tu dong
+```
+Telegram (bạn) → AI soạn draft → Bạn duyệt → OK → AI đăng tự động
+```
 
-## Yeu cau
+## Yêu cầu
 
-- Tai khoan LinkedIn, Facebook, Threads (da login tren browser)
-- Telegram bot (tao qua @BotFather)
-- OpenClaw (da cai dat)
+- Tài khoản LinkedIn, Facebook, Threads (đã login trên browser)
+- Telegram bot (tạo qua @BotFather)
+- OpenClaw (đã cài đặt theo hướng dẫn trong config/)
 
-## Cac buoc
+## Các bước
 
-1. Cai dat OpenClaw (xem config/)
-2. Ket noi Telegram bot
-3. Login cac nen tang social tren browser
-4. Gui lenh "soan bai" tren Telegram
-5. Duyet noi dung
-6. OK de dang
+1. Cài đặt OpenClaw (xem [`config/`](../config))
+2. Kết nối Telegram bot (`botToken`)
+3. Login các nền tảng social trên browser (CrawBot)
+4. Gửi lệnh "soan bai" trên Telegram
+5. Duyệt nội dung
+6. OK để đăng
 
-## Luu y
+## Lưu ý
 
-- Luon duyet truoc khi dang
-- Tien Viet co dau, tone chuyen nghiep
-- Bai dang duoc archive vao memory moi ngay
-- Backup len GitHub cuoi ngay
+- Luôn duyệt trước khi đăng
+- Tiếng Việt có dấu, tone chuyên nghiệp
+- Bài đăng được archive vào memory mỗi ngày
+- Backup lên GitHub cuối ngày
 
 ---
 

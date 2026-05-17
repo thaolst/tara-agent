@@ -1,37 +1,37 @@
-# Quy trinh dang bai
+# Quy trình đăng bài
 
-## 1. Gui lenh tren Telegram
+## 1. Gửi lệnh trên Telegram
 
-Gui tin nhan cho bot Telegram cua ban:
-- "soan bai linkedin" -> soan draft cho LinkedIn
-- "soan bai facebook" -> soan draft cho Facebook
-- "soan bai threads" -> soan draft cho Threads
-- "dang bai len linkedin: [noi dung]" -> dang truc tiep
+Gửi tin nhắn cho bot Telegram của bạn:
+- `"soan bai linkedin"` — soạn draft cho LinkedIn
+- `"soan bai facebook"` — soạn draft cho Facebook
+- `"soan bai threads"` — soạn draft cho Threads
+- `"dang bai len linkedin: [nội dung]"` — đăng trực tiếp
 
-## 2. AI soan draft
+## 2. AI soạn draft
 
-AI se soan noi dung theo style tung nen tang:
-- LinkedIn: chuyen sau, chuyen nghiep
-- Facebook: gan gui, cam xuc
-- Threads: ngan gon, conversational
+AI sẽ soạn nội dung theo style từng nền tảng:
+- **LinkedIn:** chuyên sâu, chuyên nghiệp
+- **Facebook:** gần gũi, cảm xúc
+- **Threads:** ngắn gọn, conversational
 
-## 3. Ban duyet
+## 3. Bạn duyệt
 
-AI gui draft lai Telegram.
-Ban co the:
-- "ok" hoac "dang" -> xac nhan dang
-- "sua: [noi dung moi]" -> yeu cau chinh sua
-- "huy" -> huy bo
+AI gửi draft lại Telegram.
+Bạn có thể:
+- `"ok"` hoặc `"dang"` -> xác nhận đăng
+- `"sua: [nội dung mới]"` -> yêu cầu chỉnh sửa
+- `"huy"` -> hủy bỏ
 
-## 4. AI dang
+## 4. AI đăng
 
-Khi ban OK, AI mo browser va dang bai.
-Bao lai: "Da dang xong! Link: ..."
+Khi bạn OK, AI mở browser và đăng bài.
+Báo lại: "Đã đăng xong! Link: ..."
 
 ## 5. Archive
 
-Bai dang tu dong duoc luu vao memory.
-Cuoi ngay push len GitHub backup.
+Bài đăng tự động được lưu vào memory.
+Cuối ngày push lên GitHub backup.
 
 ---
 
