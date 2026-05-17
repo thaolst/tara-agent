@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Ghép cau hinh Tara Agent vao OpenClaw config hien tai.
+"""Ghep cau hinh Tara Agent vao OpenClaw config hien tai.
 
 Hoat dong tren macOS, Linux, va Windows.
 Tu dong kiem tra prerequisite truoc khi ghi config."""
@@ -10,6 +10,7 @@ import sys
 import platform
 import subprocess
 import re
+import getpass
 
 SYSTEM = platform.system()
 
@@ -21,11 +22,11 @@ def check_node():
     try:
         result = subprocess.run(["node", "--version"], capture_output=True, text=True, timeout=10)
         if result.returncode == 0:
-            print(f"  ✅ Node.js: {result.stdout.strip()}")
+            print(f"  \u2705 Node.js: {result.stdout.strip()}")
             return True
     except (FileNotFoundError, subprocess.TimeoutExpired):
         pass
-    print("  ❌ Khong tim thay Node.js. Can cai Node.js (https://nodejs.org).")
+    print("  \u274c Khong tim thay Node.js. Can cai Node.js (https://nodejs.org).")
     return False
 
 
@@ -35,17 +36,17 @@ def check_openclaw():
         result = subprocess.run(["openclaw", "--version"], capture_output=True, text=True, timeout=10)
         if result.returncode == 0:
             version = result.stdout.strip() or result.stderr.strip()
-            print(f"  ✅ OpenClaw: {version}")
+            print(f"  \u2705 OpenClaw: {version}")
             return True
     except (FileNotFoundError, subprocess.TimeoutExpired):
         pass
-    print("  ❌ Khong tim thay OpenClaw. Chay: npm install -g openclaw@latest")
+    print("  \u274c Khong tim thay OpenClaw. Chay: npm install -g openclaw@latest")
     return False
 
 
 def check_python():
     """Kiem tra Python 3 (phong than)."""
-    print(f"  ✅ Python 3: {sys.version.split()[0]}")
+    print(f"  \u2705 Python 3: {sys.version.split()[0]}")
     return True
 
 
@@ -53,41 +54,38 @@ def check_config_exists():
     """Kiem tra openclaw.json da duoc tao chua."""
     cfg = os.path.expanduser("~/.openclaw/openclaw.json")
     if os.path.exists(cfg):
-        print(f"  ✅ Config ton tai: {cfg}")
+        print(f"  \u2705 Config ton tai: {cfg}")
         return True
-    print(f"  ❌ Chua co config tai: {cfg}")
+    print(f"  \u274c Chua co config tai: {cfg}")
     print("     Chay 'openclaw onboard' truoc de tao config mac dinh.")
     return False
 
 
 def prompt_bot_token():
-    """Hoi nguoi dung nhap botToken. Uu tien env var $BOT_TOKEN."""
+    """Hoi nguoi dung nhap botToken (an khi go). Uu tien env var $BOT_TOKEN."""
     env_token = os.environ.get("BOT_TOKEN", "").strip()
     if env_token:
-        print(f"\n  📦 Doc BOT_TOKEN tu environment variable")
+        print("\n  \U0001f4e6 Doc BOT_TOKEN tu environment variable")
         if validate_token(env_token):
             return env_token
-        print("  ⚠️  BOT_TOKEN trong env khong hop le, se hoi lai.")
+        print("  \u26a0\ufe0f BOT_TOKEN trong env khong hop le, se hoi lai.")
 
     print("")
     print("  === TELEGRAM BOT TOKEN ===")
     print("  Tao bot tai @BotFather (Telegram) -> /newbot")
-    print("  Sau do nhap token ben duoi.")
-    if SYSTEM == "Windows":
-        token = input("  Bot token: ").strip()
-    else:
-        try:
-            token = input("  Bot token: ").strip()
-        except (EOFError, KeyboardInterrupt):
-            print("\n  ⚠️  Khong nhap token. Dung lai.")
-            sys.exit(1)
+    print("  Token se duoc an khi go (khong hien tren man hinh).")
+    try:
+        token = getpass.getpass("  Bot token: ").strip()
+    except (EOFError, KeyboardInterrupt):
+        print("\n  \u26a0\ufe0f Khong nhap token. Dung lai.")
+        sys.exit(1)
 
     if not token:
-        print("  ⚠️  Token trong. Ghi placeholder, se crash khi chay!")
+        print("  \u26a0\ufe0f Token trong. Dung lai.")
         print("     Chay lai script va nhap token hop le.")
         return None
     if not validate_token(token):
-        print("  ⚠️  Token co ve khong dung dinh dang (can co ':' o giua).")
+        print("  \u26a0\ufe0f Token co ve khong dung dinh dang (can co ':' o giua).")
         retry = input("     Tiep tuc voi token nay? (y/N): ").strip().lower()
         if retry != "y":
             print("  Dung lai. Chay lai script khi co token dung.")
@@ -116,7 +114,7 @@ def main():
     print("")
 
     # Step 1: Check prerequisites (khong block, chi canh bao)
-    print("  📋 Kiem moi truong...")
+    print("  \U0001f4cb Kiem moi truong...")
     all_ok = True
     all_ok &= check_python()
     all_ok &= check_node()
@@ -125,7 +123,7 @@ def main():
     print("")
 
     if not all_ok:
-        print("  ⚠️  Thieu mot so thanh phan. Khac phuc roi chay lai.")
+        print("  \u26a0\ufe0f Thieu mot so thanh phan. Khac phuc roi chay lai.")
         cont = input("     Tiep tuc merge? (y/N): ").strip().lower()
         if cont != "y":
             print("  Dung lai.")
@@ -153,9 +151,9 @@ def main():
         "groupPolicy": "disabled"
     }
     if bot_token:
-        print("  ✅ Da them Telegram channel (voi token thuc)")
+        print("  \u2705 Da them Telegram channel (voi token that)")
     else:
-        print("  ⚠️  Da them Telegram channel (token gia - can sua sau)")
+        print("  \u26a0\ufe0f Da them Telegram channel (token gia - can sua sau)")
 
     # Step 5: Merge social agent
     if "agents" not in config:
@@ -167,13 +165,13 @@ def main():
             "id": "social",
             "name": "Tara Social Agent",
             "workspace": workspace_path,
-            "identity": {"emoji": "📢"},
+            "identity": {"emoji": "\U0001f4e2"},
             "subagents": {"allowAgents": []}
         }
         config["agents"]["list"].append(social_agent)
-        print(f"  ✅ Da them social agent (workspace: {workspace_path})")
+        print(f"  \u2705 Da them social agent (workspace: {workspace_path})")
     else:
-        print("  ℹ️  Social agent da ton tai, bo qua")
+        print("  \u2139\ufe0f Social agent da ton tai, bo qua")
 
     # Step 6: Merge bindings
     if "bindings" not in config:
@@ -187,9 +185,9 @@ def main():
             },
             "agentId": "social"
         })
-        print("  ✅ Da them bindings cho Telegram DM -> social agent")
+        print("  \u2705 Da them bindings cho Telegram DM -> social agent")
     else:
-        print("  ℹ️  Bindings da ton tai, bo qua")
+        print("  \u2139\ufe0f Bindings da ton tai, bo qua")
 
     # Step 7: Tao workspace + SOUL.md
     os.makedirs(workspace_path, exist_ok=True)
@@ -198,24 +196,24 @@ def main():
         with open(soul_path, "w", encoding="utf-8") as f:
             f.write("""# SOUL.md - Tara Social Agent
 
-Ban la social agent. Nhiem vu: soan va dang bai LinkedIn, Facebook, Threads.
+Bạn là social agent. Nhiệm vụ: soạn và đăng bài LinkedIn, Facebook, Threads.
 
-## Quy trinh
-1. Nguoi dung gui lenh: "soan bai linkedin", "soan bai facebook", "soan bai threads"
-2. Ban soan draft theo style tung nen tang
-3. Gui draft lai, hoi: "Duyet bai nay? OK de dang hoac sua: ..."
-4. Neu OK: mo browser va dang bai
-5. Bao link sau khi dang, luu vao memory
+## Quy trình
+1. Người dùng gửi lệnh: "soạn bài linkedin", "soạn bài facebook", "soạn bài threads"
+2. Bạn soạn draft theo style từng nền tảng
+3. Gửi draft lại, hỏi: "Duyệt bài này? OK để đăng hoặc sửa: ..."
+4. Nếu OK: mở browser và đăng bài
+5. Báo link sau khi đăng, lưu vào memory
 
-## Quy tac
-- Luon xin duyet truoc khi dang
-- Tieng Viet co dau, tone chuyen nghiep
-- Kem hashtag phu hop
-- Khong share thong tin ca nhan
+## Quy tắc
+- Luôn xin duyệt trước khi đăng
+- Tiếng Việt có dấu, tone chuyên nghiệp
+- Kèm hashtag phù hợp
+- Không share thông tin cá nhân
 """)
-        print("  ✅ Da tao SOUL.md cho workspace-social")
+        print("  \u2705 Da tao SOUL.md cho workspace-social")
     else:
-        print("  ℹ️  SOUL.md da ton tai, bo qua")
+        print("  \u2139\ufe0f SOUL.md da ton tai, bo qua")
 
     # Step 8: Ghi config
     with open(config_path, "w") as f:
@@ -223,7 +221,7 @@ Ban la social agent. Nhiem vu: soan va dang bai LinkedIn, Facebook, Threads.
 
     print("")
     print("  ===================================")
-    print("  ✅ Merge hoan tat!")
+    print("  \u2705 Merge hoan tat!")
     print("  ===================================")
     print(f"     Config: {config_path}")
     print(f"     Workspace: {workspace_path}")
@@ -231,12 +229,12 @@ Ban la social agent. Nhiem vu: soan va dang bai LinkedIn, Facebook, Threads.
     print("")
 
     if bot_token:
-        print("  ▶️  Tiep theo: openclaw gateway restart")
+        print("  \u25b6\ufe0f Tiep theo: openclaw gateway restart || openclaw gateway start")
     else:
-        print("  ⚠️  NHO sua botToken trong config truoc khi restart!")
+        print("  \u26a0\ufe0f NHO sua botToken trong config truoc khi khoi dong!")
         print("     Mo file: " + config_path)
         print("     Tim 'botToken' va nhap token that vao.")
-        print("  ▶️  Sau do: openclaw gateway restart")
+        print("  \u25b6\ufe0f Sau do: openclaw gateway restart || openclaw gateway start")
 
     print("")
 

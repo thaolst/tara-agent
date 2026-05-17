@@ -1,55 +1,51 @@
 # Tara Agent
 
-> Tro ly AI ca nhan cua ban tren Telegram. Bat dau bang social auto-pilot, mo rong dan.
+> Trợ lý AI cá nhân của bạn trên Telegram. Bắt đầu bằng social auto-pilot, mở rộng dần.
 
-Tara Agent la blueprint cho mot AI ca nhan co the nhan lenh tu Telegram, soan va dang bai len LinkedIn, Facebook, Threads. Mo rong them tinh nang khi ban can.
+Tara Agent là blueprint cho một AI cá nhân có thể nhận lệnh từ Telegram, soạn và đăng bài lên LinkedIn, Facebook, Threads. Mở rộng thêm tính năng khi bạn cần.
 
-Khong can API key tung nen tang. Khong can code. Chi can OpenClaw + 1 Telegram bot.
+Không cần API key từng nền tảng. Không cần code. Chỉ cần OpenClaw + 1 Telegram bot.
 
-## Tai sao Tara Agent?
+## Tại sao Tara Agent?
 
-| Van de | Giai phap |
+| Vấn đề | Giải pháp |
 |---|---|
-| Phai dang bai thu cong nhieu nen tang | Telegram gui lenh, AI lam het |
-| Soan content ton nhieu thoi gian | AI soan, ban duyet nhanh |
-| Khong biet lap trinh | Chi can copy config mau |
-| So mat du lieu khi mat may | Backup len GitHub moi ngay |
-| May tinh cong ty bi thu hoi | Config tren GitHub, deploy lai de dang |
+| Phải đăng bài thủ công nhiều nền tảng | Telegram gửi lệnh, AI làm hết |
+| Soạn content tốn nhiều thời gian | AI soạn, bạn duyệt nhanh |
+| Không biết lập trình | Chỉ cần copy config mẫu |
+| Sợ mất dữ liệu khi mất máy | Backup lên GitHub mỗi ngày |
+| Máy tính công ty bị thu hồi | Config trên GitHub, deploy lại dễ dàng |
 
----
+## Yêu cầu & Kiểm tra
 
-## Yeu cau & Kiem tra
+Trước khi bắt đầu, máy tính cần có:
+- **Node.js** (>= 18) -- tải về từ https://nodejs.org
+- **Python 3** -- macOS/Linux có sẵn, Windows cần tải từ https://python.org
+- **Git** -- https://git-scm.com
+- **1 Telegram bot token** -- tạo tại @BotFather (Telegram)
 
-Truoc khi bat dau, may tinh can co:
-- **Node.js** (>= 18) - tai ve tu https://nodejs.org
-- **Python 3** - macOS/Linux co san, Windows can tai tu https://python.org
-- **Git** - https://git-scm.com
-- **1 Telegram bot token** - tao tai @BotFather (Telegram)
+Script `merge_config.py` sẽ tự động kiểm tra các yêu cầu này trước khi ghi config.
 
-Script `merge_config.py` se tu dong kiem tra cac yeu cau nay.
-
----
-
-## Bat dau nhanh
+## Bắt đầu nhanh
 
 ### macOS
 
 ```bash
-# 1. Cai OpenClaw
+# 1. Cài OpenClaw
 npm install -g openclaw@latest
 openclaw onboard
 
-# 2. Clone repo va ghep tu dong
+# 2. Clone repo và ghép tự động
 git clone https://github.com/thaolst/tara-agent.git
 cd tara-agent
 python3 merge_config.py
 
-# 3. Script se hoi botToken -> nhap vao
-# 4. Restart
-openclaw gateway restart
+# 3. Script sẽ hỏi botToken -> nhập vào (token được ẩn khi gõ)
+# 4. Restart gateway
+openclaw gateway restart || openclaw gateway start
 ```
 
-**macOS note:** Khong can cai them gi. Python co san. Chi can Node.js.
+**macOS note:** Python có sẵn. Chỉ cần cài Node.js.
 
 ### Linux (Ubuntu/Debian)
 
@@ -62,19 +58,20 @@ git clone https://github.com/thaolst/tara-agent.git
 cd tara-agent
 python3 merge_config.py
 
-openclaw gateway restart
+openclaw gateway restart || openclaw gateway start
 ```
 
 ### Windows
 
-Windows co **2 cach**. Cach nao cung duoc:
+Windows có **2 cách**. Cách nào cũng được.
 
-#### Cach 1: Git Bash (de nhat)
+#### Cách 1: Git Bash (dễ nhất)
 
-1. Cai **Node.js** tu https://nodejs.org (tick "Add to PATH")
-2. Cai **Git for Windows** tu https://git-scm.com (tick "Git Bash" + "Git from the command line")
-3. Mo **Git Bash**
-4. Chay:
+1. Cài **Node.js** từ https://nodejs.org (tick "Add to PATH")
+2. Cài **Git for Windows** từ https://git-scm.com (tick "Git Bash" + "Git from the command line")
+3. Mở **Git Bash**
+4. Chạy:
+
 ```bash
 npm install -g openclaw@latest
 openclaw onboard
@@ -83,17 +80,20 @@ git clone https://github.com/thaolst/tara-agent.git
 cd tara-agent
 python3 merge_config.py
 
-openclaw gateway restart
+openclaw gateway restart || openclaw gateway start
 ```
 
-#### Cach 2: WSL (Windows Subsystem for Linux)
+#### Cách 2: WSL (Windows Subsystem for Linux)
 
-1. Mo PowerShell (Admin), chay:
+1. Mở PowerShell (Admin), chạy:
+
 ```powershell
 wsl --install -d Ubuntu
 ```
-2. Restart may, mo **Ubuntu** tu Start Menu
-3. Trong WSL terminal, chay:
+
+2. Restart máy, mở **Ubuntu** từ Start Menu
+3. Trong WSL terminal, chạy:
+
 ```bash
 sudo apt update && sudo apt install nodejs npm python3 git -y
 npm install -g openclaw@latest
@@ -103,32 +103,29 @@ git clone https://github.com/thaolst/tara-agent.git
 cd tara-agent
 python3 merge_config.py
 
-openclaw gateway restart
+openclaw gateway restart || openclaw gateway start
 ```
 
-**Windows note:** Neu `python3` khong tim thay, thu `python merge_config.py`.
+**Windows note:** Nếu `python3` không tìm thấy, thử `python merge_config.py`.
 
----
+## Nếu bị crash (lỗi gateway)
 
-## Neu bi crash (loi gateway)
+Nguyên nhân thường gặp:
 
-Nguyen nhan thuong gap:
-1. **botToken sai hoac de placeholder** -> Mo `~/.openclaw/openclaw.json`, kiem tra muc "botToken"
-2. **Thieu Node.js** -> Cai Node.js, chay lai `npm install -g openclaw@latest`
-3. **Telegram bi chan mang** -> Thu dung Telegram bot o dien thoai kiem tra truoc
+1. **botToken sai hoặc để placeholder** -- Mở `~/.openclaw/openclaw.json`, kiểm tra mục "botToken"
+2. **Thiếu Node.js** -- Cài Node.js, chạy lại `npm install -g openclaw@latest`
+3. **Telegram bị chặn mạng** -- Thử dùng Telegram bot ở điện thoại kiểm tra trước
 
-Fix nhanh: chay lai `python3 merge_config.py`, script se hoi botToken moi.
+Fix nhanh: chạy lại `python3 merge_config.py`, script sẽ hỏi botToken mới.
 
----
-
-## Cau truc repo
+## Cấu trúc repo
 
 ```
 tara-agent/
-├── README.md          # Gioi thieu
-├── ROADMAP.md         # Lo trinh phat trien
-├── merge_config.py    # Script ghep config tu dong (cross-platform)
-├── config/            # File cau hinh OpenClaw mau
+├── README.md          # Giới thiệu
+├── ROADMAP.md         # Lộ trình phát triển
+├── merge_config.py    # Script ghép config tự động (cross-platform)
+├── config/            # File cấu hình OpenClaw mẫu
 │   ├── README.md
 │   └── openclaw.json
 ├── social/            # Social auto-pilot workflow
@@ -136,11 +133,12 @@ tara-agent/
 │   ├── noidung-mau.md
 │   └── quy-trinh.md
 └── LICENSE            # MIT
+
 ```
 
 ## License
 
-MIT - use freely, share widely.
+MIT -- use freely, share widely.
 
 ---
 
@@ -170,8 +168,8 @@ git clone https://github.com/thaolst/tara-agent.git
 cd tara-agent
 python3 merge_config.py
 
-# Script will prompt for botToken
-openclaw gateway restart
+# Script will prompt for botToken (hidden input)
+openclaw gateway restart || openclaw gateway start
 ```
 
 **Windows (Git Bash or WSL):**
@@ -180,8 +178,8 @@ openclaw gateway restart
 - Open Git Bash, then run the same commands above
 
 ### If gateway crashes
-1. Check `~/.openclaw/openclaw.json` - make sure `botToken` is not the placeholder
-2. Run `python3 merge_config.py` again - it now prompts for a real token
+1. Check `~/.openclaw/openclaw.json` -- make sure `botToken` is not the placeholder
+2. Run `python3 merge_config.py` again -- it now prompts for a real token
 3. Verify Node.js + OpenClaw are installed
 
 ### Why Tara Agent?
