@@ -14,7 +14,7 @@ Không cần API key từng nền tảng. Không cần code. Chỉ cần OpenCla
 | Soạn content tốn nhiều thời gian | AI soạn, bạn duyệt nhanh |
 | Không biết lập trình | Chỉ cần copy config mẫu |
 | Sợ mất dữ liệu khi mất máy | Backup lên GitHub mỗi ngày |
-| Mất/lỡ thiết bị | Config trên GitHub, deploy lại dễ dàng |
+| Mất/lỗi thiết bị | Config trên GitHub, deploy lại dễ dàng |
 
 ## Yêu cầu & Kiểm tra
 
