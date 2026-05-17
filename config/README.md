@@ -2,9 +2,14 @@
 
 ## Cách dùng
 
-File `openclaw.json` này là **phần cấu hình cho Tara Agent**. Bạn cần ghép (merge) nó vào file `~/.openclaw/openclaw.json` hiện tại.
+**Cách khuyên dùng:** chạy script tự động (hoạt động trên cả macOS, Linux, Windows):
+```bash
+cd tara-agent
+python3 merge_config.py
+```
+Script này tự động ghép Tara Agent vào file `~/.openclaw/openclaw.json` hiện tại.
 
-### Cách 1: Thủ công (khuyên dùng)
+### Nếu muốn thêm thủ công
 
 1. Mở file config hiện tại:
 ```bash

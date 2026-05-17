@@ -13,7 +13,7 @@
       {
         "id": "social",
         "name": "Tara Social Agent",
-        "workspace": "/Users/<your-username>/.openclaw/workspace-social",
+        "workspace": "~/.openclaw/workspace-social",
         "identity": {
           "emoji": "📢"
         },

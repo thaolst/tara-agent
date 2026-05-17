@@ -16,26 +16,25 @@ Không cần API key từng nền tảng. Không cần code. Chỉ cần OpenCla
 | Sợ mất dữ liệu khi mất máy | Backup lên GitHub mỗi ngày |
 | Máy tính công ty bị thu hồi | Config trên GitHub, deploy lại dễ dàng |
 
-## Bắt đầu nhanh
+## Bắt đầu nhanh (macOS / Linux / Windows)
 
 ```bash
 # 1. Cài OpenClaw
 npm install -g openclaw@latest
 openclaw onboard
 
-# 2. Clone repo và chạy merge
+# 2. Clone repo và ghép tự động
 git clone https://github.com/thaolst/tara-agent.git
 cd tara-agent
 python3 merge_config.py
 
-# 3. Sửa botToken + username trong ~/.openclaw/openclaw.json
-nano ~/.openclaw/openclaw.json
-
+# 3. Sửa botToken trong ~/.openclaw/openclaw.json
 # 4. Restart
 openclaw gateway restart
 ```
 
-Xem file trong [`social/`](./social) và [`config/`](./config) để biết chi tiết.
+> **Windows:** dùng Git Bash hoặc WSL. Script tự động dùng path đúng.`merge_config.py` nhận diện OS và dùng path phù hợp.
+> **macOS:** chạy trực tiếp.
 
 ## Cấu trúc repo
 
