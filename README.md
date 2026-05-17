@@ -14,7 +14,7 @@ Không cần API key từng nền tảng. Không cần code. Chỉ cần OpenCla
 | Soạn content tốn nhiều thời gian | AI soạn, bạn duyệt nhanh |
 | Không biết lập trình | Chỉ cần copy config mẫu |
 | Sợ mất dữ liệu khi mất máy | Backup lên GitHub mỗi ngày |
-| Máy tính công ty bị thu hồi | Config trên GitHub, deploy lại dễ dàng |
+| Mất/lỡ thiết bị | Config trên GitHub, deploy lại dễ dàng |
 
 ## Yêu cầu & Kiểm tra
 
@@ -189,7 +189,7 @@ openclaw gateway restart || openclaw gateway start
 | Manual posting on multiple platforms | Telegram command, AI does the work |
 | Content creation takes too long | AI drafts, you approve quickly |
 | Don't know how to code | Just copy a config file |
-| Fear of losing data when computer is taken | Daily backup to GitHub |
-| Company laptop reclaimed | Config on GitHub, redeploy instantly |
+| Fear of losing data when device is taken | Daily backup to GitHub |
+| Lost or replaced device | Config on GitHub, redeploy instantly |
 
 </details>
