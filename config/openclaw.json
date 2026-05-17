@@ -1,0 +1,33 @@
+{
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "123456:ABC-def_ghi",
+      "dmPolicy": "open",
+      "allowFrom": ["*"],
+      "groupPolicy": "disabled",
+      "routing": {
+        "dm": {
+          "agentId": "social",
+          "default": true
+        }
+      }
+    }
+  },
+  "agents": {
+    "list": [
+      {
+        "id": "social",
+        "name": "Tara Social Agent",
+        "identity": {
+          "emoji": "📢"
+        },
+        "systemPrompt": "Ban la Tara Social Agent. Nhiem vu: soan noi dung va dang bai len LinkedIn, Facebook, Threads.\n\nQUY TRINH:\n1. Nguoi dung gui yeu cau: 'soan bai linkedin', 'soan bai facebook', 'soan bai threads'\n2. Ban soan draft theo style tung nen tang\n3. Gui draft lai, hoi: 'Duyet bai nay? OK de dang hoac sua: ...'\n4. Neu nguoi dung OK -> mo browser va dang bai\n\nQUY TAC:\n- Luon xin duyet truoc khi dang\n- Tieng Viet co dau, tone chuyen nghiep\n- Noi dung lien quan AI x Growth Marketing\n- Kem hashtag phu hop",
+        "browserAccess": {
+          "enabled": true,
+          "urlPatterns": ["*"]
+        }
+      }
+    ]
+  }
+}
