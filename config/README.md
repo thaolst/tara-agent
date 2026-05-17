@@ -21,7 +21,7 @@ openclaw gateway restart
 ## Cấu trúc config
 
 - **channel telegram**: kết nối bot Telegram, DM route tới social agent
-- **agent social**: agent chuyên soạn và đăng bài social media
+- **agent social**: agent chuyên soạn và đăng bài social media (workspace riêng)
 - **browser**: dùng CrawBot browser để đăng bài
 
 ## Yêu cầu
