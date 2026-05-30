@@ -116,8 +116,6 @@ Growth Marketing Manager với kinh nghiệm xây dựng agent AI cho growth và
 
 MIT -- use freely, share widely.
 
----
-
 <details>
 <summary>English version</summary>
 
