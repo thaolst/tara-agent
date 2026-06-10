@@ -12,7 +12,7 @@
 
 Tara Agent là blueprint cho một AI cá nhân có thể nhận lệnh từ Telegram, soạn và đăng bài lên LinkedIn, Facebook, Threads. Mở rộng thêm tính năng khi bạn cần.
 
-Không cần API key từng nền tảng. Không cần code. Chỉ cần OpenClaw + 1 Telegram bot.
+Không cần API key từng nền tảng và không cần viết code, nhưng cần cài Node.js, Python, Git và chạy vài lệnh terminal cơ bản. Setup khoảng 15-20 phút với OpenClaw + 1 Telegram bot.
 
 ## Tại sao Tara Agent?
 
@@ -20,7 +20,7 @@ Không cần API key từng nền tảng. Không cần code. Chỉ cần OpenCla
 |---|---|
 | Phải đăng bài thủ công nhiều nền tảng | Telegram gửi lệnh, AI làm hết |
 | Soạn content tốn nhiều thời gian | AI soạn, bạn duyệt nhanh |
-| Không biết lập trình | Chỉ cần copy config mẫu |
+| Không biết lập trình | Copy config mẫu, chạy lệnh theo hướng dẫn từng bước |
 | Sợ mất dữ liệu khi mất máy | Backup lên GitHub mỗi ngày |
 | Mất/lỗi thiết bị | Config trên GitHub, deploy lại dễ dàng |
 
@@ -123,7 +123,7 @@ MIT -- use freely, share widely.
 
 Your personal AI agent on Telegram. Start with social auto-pilot, expand as needed.
 
-Tara Agent is a blueprint for a personal AI that takes commands from Telegram, drafts and posts content to LinkedIn, Facebook, and Threads. No API keys needed. No coding required. Just OpenClaw + a Telegram bot.
+Tara Agent is a blueprint for a personal AI that takes commands from Telegram, drafts and posts content to LinkedIn, Facebook, and Threads. No per-platform API keys and no code to write, but you do need Node.js, Python, Git, and a few basic terminal commands. Setup takes about 15-20 minutes with OpenClaw + a Telegram bot.
 
 ### Requirements
 - **Node.js** >= 18 (https://nodejs.org)
